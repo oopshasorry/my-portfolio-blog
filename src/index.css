@@ -1,68 +1,113 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@theme {
+  /* Font Families: Define custom font stacks.
+     Ensure "Inter" is linked in public/index.html (e.g., via Google Fonts). */
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  /* You could add --font-family-serif or --font-family-mono here if needed. */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Colors: Define a custom color palette.
+     Tailwind will generate utility classes like `bg-brand-500`, `text-brand-700`, etc. */
+  --color-brand-50: #eff6ff; /* Example: Lightest Blue */
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6; /* Primary Brand Color (e.g., Blue-500 equivalent) */
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554; /* Example: Darkest Blue */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Spacing: Extend Tailwind's spacing scale if needed. */
+  --spacing-128: 32rem; /* Creates p-128, m-128, w-128, h-128, etc. */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+/*
+ * Import Tailwind CSS v4's core styles (base, components, utilities).
+ * This directive is processed by the @tailwindcss/vite plugin.
+ */
+@import "tailwindcss";
 
+/*
+ * Global Styles & Custom Component Layer Additions.
+ * Apply base styles to global elements like `body` or define custom component classes here.
+ * You can use Tailwind's @apply directive to compose utilities into custom classes,
+ * or write plain CSS.
+ */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  @apply font-sans bg-slate-100 text-slate-900; /* Apply themed font and default colors */
+  @apply dark:bg-slate-900 dark:text-slate-100; /* Dark mode colors */
+  @apply antialiased; /* Improves font rendering consistency */
+  @apply transition-colors duration-300 ease-in-out; /* Smooth theme transitions */
+  @apply selection:bg-brand-500 selection:text-white; /* Custom text selection style */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/*
+ * Styles for the @tailwindcss/typography plugin (the `prose` classes).
+ * This plugin provides excellent defaults for styling blocks of rich text content,
+ * like blog posts rendered from Markdown. Customize these to match your site's aesthetic.
+ * Ensure you have installed @tailwindcss/typography.
+ */
+.prose {
+  @apply text-slate-700 dark:text-slate-300; /* Base prose text color */
 }
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-slate-900 dark:text-slate-100 font-semibold; /* Prose heading colors and weight */
+}
+.prose a {
+  /* Prose link styles */
+  @apply text-brand-600 font-medium no-underline;
+  @apply hover:text-brand-500 hover:underline;
+  @apply dark:text-brand-500 dark:hover:text-brand-600;
+}
+.prose strong {
+  /* Prose strong (bold) text */
+  @apply font-semibold text-slate-800 dark:text-slate-200;
+}
+/* Corrected inline code styling for prose */
+.prose code:not(pre > code) {
+  /* Target inline code specifically, not code within <pre> */
+  @apply bg-slate-200 text-sm font-mono text-brand-700 rounded-md px-1.5 py-0.5;
+  @apply dark:bg-slate-700 dark:text-brand-400;
+  /* The before:content and after:content are often used to prevent backticks from being copied */
+  /* or to remove unwanted quote rendering by some browsers/markdown parsers for inline code. */
+  /* However, they can sometimes interfere. Test if needed, or remove if causing issues. */
+  /* For basic styling, they might not be necessary. */
+  @apply before:content-[''] after:content-['']; /* Typically to remove quotes around inline code */
+}
+.prose pre {
+  /* Prose code blocks */
+  @apply bg-slate-800 text-slate-200 p-4 rounded-lg shadow-md overflow-x-auto;
+  @apply dark:bg-slate-700 dark:text-slate-300;
+}
+.prose pre code {
+  /* Code within preformatted blocks */
+  @apply bg-transparent p-0 text-inherit font-mono text-sm; /* Reset styles, ensure mono font, consistent size */
+}
+.prose blockquote {
+  @apply border-l-4 border-brand-500 pl-4 italic text-slate-600 dark:text-slate-400 my-6; /* Added margin */
+}
+.prose ul,
+.prose ol {
+  @apply my-4 pl-5;
+} /* Basic list styling */
+.prose li {
+  @apply mb-2;
+}
+.prose ul li::before {
+  /* Custom bullet for unordered lists */
+  @apply content-['•'] text-brand-500 absolute left-0;
+}
+.prose ol {
+  @apply list-decimal;
+} /* Ensure ordered lists use decimal numbering */
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Add more custom prose styles for tables, images, etc., as needed. */

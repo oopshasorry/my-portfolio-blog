@@ -1,27 +1,69 @@
+// .devcontainer/devcontainer.json
 {
   "name": "React Portfolio Dev (Node.js & TypeScript)",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bullseye",
   "customizations": {
     "vscode": {
       "settings": {
+        // General Editor Settings
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "files.eol": "\n",
         "terminal.integrated.defaultProfile.linux": "bash",
+
+        // Language Specific Formatters
         "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-        "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
         "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
         "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-        "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+        "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+        // ESLint Configuration
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
         "eslint.workingDirectories": [{ "mode": "auto" }],
-        "tailwindCSS.includeLanguages": { "typescript": "javascript", "typescriptreact": "javascriptreact" },
-        "tailwindCSS.emmetCompletions": true
+
+        // --- Tailwind CSS IntelliSense Recommended & Specific Settings ---
+        "tailwindCSS.validate": true, // Master switch for Tailwind linting (default is true)
+        "tailwindCSS.lint.invalidApply": "error", // Default. If it falsely flags valid v4 @apply, consider "warning" temporarily.
+        "tailwindCSS.lint.invalidScreen": "error",
+        "tailwindCSS.lint.invalidVariant": "error",
+        "tailwindCSS.lint.invalidTailwindDirective": "error",
+        "tailwindCSS.lint.invalidConfigPath": "error", // For theme() helper if using tailwind.config.js
+
+        "tailwindCSS.includeLanguages": {
+          "typescript": "javascript",
+          "typescriptreact": "javascriptreact"
+        },
+        "tailwindCSS.emmetCompletions": true,
+        "files.associations": {
+          // Crucial for associating .css files with Tailwind's language server
+          "*.css": "tailwindcss"
+        },
+        "editor.quickSuggestions": {
+          // Enhances autocompletion for Tailwind classes in strings
+          "strings": "on"
+        }
+        // --- End of Tailwind CSS Settings ---
       },
       "extensions": [
-        "dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "bradlc.vscode-tailwindcss",
-        "ms-vscode.vscode-typescript-next", "eamodio.gitlens", "github.vscode-pull-request-github",
-        "pflannery.vscode-versionlens", "usernamehw.errorlens", "wayou.vscode-todo-highlight",
-        "visualstudioexptteam.vscodeintellicode", "styled-components.vscode-styled-components"
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss", // Ensure this is the official extension by Tailwind Labs and is the LATEST version
+        "ms-vscode.vscode-typescript-next",
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "pflannery.vscode-versionlens",
+        "usernamehw.errorlens",
+        "wayou.vscode-todo-highlight",
+        "visualstudioexptteam.vscodeintellicode",
+        "styled-components.vscode-styled-components"
       ]
     }
   },
