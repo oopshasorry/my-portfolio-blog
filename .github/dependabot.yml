@@ -1,0 +1,23 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  # Enable version updates for npm (or yarn, pnpm if you use them)
+  - package-ecosystem: "npm" # Specifies the package manager
+    directory: "/" # Location of package manifests (package.json, package-lock.json)
+    schedule:
+      interval: "daily" # How often to check for updates (daily, weekly, monthly)
+    open-pull-requests-limit: 10 # Limit the number of open PRs Dependabot creates
+    reviewers:
+      - "oopshasorry" # Optional: assign reviewers to Dependabot PRs
+    assignees:
+      - "oopshasorry" # Optional: assign users to Dependabot PRs
+    commit-message:
+      prefix: "chore" # Prefix for commit messages (e.g., "chore(deps): ...")
+      prefix-development: "chore" # Prefix for dev dependencies
+      include: "scope" # Include "deps" or "deps-dev" in the commit message scope
+
+  # Optional: Enable updates for GitHub Actions used in your workflows
+  # - package-ecosystem: "github-actions"
+  #   directory: "/" # Location of your workflow files (usually .github/workflows)
+  #   schedule:
+  #     interval: "weekly"
