@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
     base: base,
     // **** ADD THIS SERVER CONFIGURATION ****
     server: {
-      host: "127.0.0.1", // This will expose the server on all network interfaces (0.0.0.0)
+      host: true, // This will expose the server on all network interfaces (0.0.0.0)
       // making it accessible from your host machine via the forwarded port.
       // You could also explicitly set it: host: '0.0.0.0',
       port: 5173, // Optional: explicitly set the port, though Vite defaults to 5173

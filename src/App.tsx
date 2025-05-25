@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./components/layout/MainLayout"; // Import MainLayout
+import SimpleTestPage from "./pages/SimpleTestPage"; // Keep SimpleTestPage for now
 
-function App() {
-  const [count, setCount] = useState(0)
+const appBaseName = import.meta.env.BASE_URL;
 
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter basename={appBaseName}>
+      <div style={{ border: "2px solid red", padding: "10px", margin: "10px" }}>
+        {" "}
+        {/* Wrapper to see App.tsx boundary */}
+        <h1 style={{ color: "red" }}>Inside App.tsx - Before Routes</h1>
+        <Routes>
+          {/* Define a layout route. MainLayout will render, and its Outlet will render child elements. */}
+          <Route path="/" element={<MainLayout />}>
+            {/* 'index' makes SimpleTestPage the default child for the '/' path of MainLayout */}
+            <Route index element={<SimpleTestPage />} />
+            <Route
+              path="another"
+              element={
+                // Test another page within the layout
+                <div
+                  style={{
+                    padding: "20px",
+                    backgroundColor: "lightyellow",
+                    border: "2px solid orange",
+                  }}
+                >
+                  <h1>Another Test Page (Inside Layout)</h1>
+                </div>
+              }
+            />
+          </Route>
+        </Routes>
+        <h1 style={{ color: "red" }}>Inside App.tsx - After Routes</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    </BrowserRouter>
+  );
+};
+export default App;

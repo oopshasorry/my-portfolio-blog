@@ -1,13 +1,11 @@
 // src/main.tsx
-import { StrictMode } from "react"; // Correct import for StrictMode
-import { createRoot } from "react-dom/client"; // Correct import for createRoot
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css"; // Your global styles and Tailwind CSS
+import "./index.css"; // <<< TEMPORARILY COMMENT THIS OUT
 
-// Get the root DOM element
 const rootElement = document.getElementById("root");
 
-// Ensure the root element exists before trying to render into it
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
@@ -15,7 +13,5 @@ if (rootElement) {
     </StrictMode>
   );
 } else {
-  console.error(
-    "Failed to find the root element. Ensure an element with ID 'root' exists in your index.html."
-  );
+  console.error("FATAL ERROR: Root element with ID 'root' not found...");
 }
