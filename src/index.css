@@ -6,23 +6,31 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
   /* You could add --font-family-serif or --font-family-mono here if needed. */
+  --font-family-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Colors: Define a custom color palette.
-     Tailwind will generate utility classes like `bg-brand-500`, `text-brand-700`, etc. */
-  --color-brand-50: #eff6ff; /* Example: Lightest Blue */
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6; /* Primary Brand Color (e.g., Blue-500 equivalent) */
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #172554; /* Example: Darkest Blue */
+  /* Cyber Theme Colors */
+  --color-cyber-dark: #0d0d0d; /* Deep black for backgrounds */
+  --color-cyber-bg-alt: #1a1a1a; /* Slightly lighter dark for secondary backgrounds */
+  --color-neon-green: #39ff14;
+  --color-neon-purple: #bc13fe;
+  --color-accent-white: #ffffff; /* Pure white for high contrast text/elements */
+  --color-text-primary: #e0e0e0; /* Off-white/light gray for primary text (on dark bg) */
+  --color-text-secondary: #a0a0a0; /* Dimmer gray for secondary text (on dark bg) */
+  --color-text-dark-primary: #1f2937; /* Dark gray for primary text (on light bg) */
+  --color-text-dark-secondary: #4b5563; /* Medium gray for secondary text (on light bg) */
+  --color-border-medium: #333333; /* For subtle borders on dark bg */
+  --color-border-light-mode: #d1d5db; /* For subtle borders on light bg */
 
   /* Spacing: Extend Tailwind's spacing scale if needed. */
   --spacing-128: 32rem; /* Creates p-128, m-128, w-128, h-128, etc. */
+  /* You can also define other theme aspects like shadows here */
+  --shadow-neon-glow-green: 0 0 5px theme(colors.neon-green),
+    0 0 10px theme(colors.neon-green), 0 0 15px theme(colors.neon-green),
+    0 0 20px theme(colors.neon-green);
+  --shadow-neon-glow-purple: 0 0 5px theme(colors.neon-purple),
+    0 0 10px theme(colors.neon-purple), 0 0 15px theme(colors.neon-purple),
+    0 0 20px theme(colors.neon-purple);
 }
 
 /*
@@ -38,21 +46,26 @@
  * or write plain CSS.
  */
 body {
-  @apply font-sans bg-slate-100 text-slate-900; /* Apply themed font and default colors */
-  @apply dark:bg-slate-900 dark:text-slate-100; /* Dark mode colors */
+  /* Default to dark mode aesthetic as per cyber theme */
+  @apply font-sans bg-cyber-dark text-text-primary;
   @apply antialiased; /* Improves font rendering consistency */
   @apply transition-colors duration-300 ease-in-out; /* Smooth theme transitions */
-  @apply selection:bg-brand-500 selection:text-white; /* Custom text selection style */
+  @apply selection:bg-neon-purple selection:text-accent-white; /* Custom text selection style */
+
+  /* Optional: Define light mode if you plan to support it with a toggle */
+  /* @apply light:bg-accent-white light:text-text-dark-primary; */
 }
 
 /*
  * Styles for the @tailwindcss/typography plugin (the `prose` classes).
  * This plugin provides excellent defaults for styling blocks of rich text content,
  * like blog posts rendered from Markdown. Customize these to match your site's aesthetic.
- * Ensure you have installed @tailwindcss/typography.
+ * Ensure you have installed @tailwindcss/typography and it's configured (usually in tailwind.config.js or postcss.config.js for v4).
  */
 .prose {
-  @apply text-slate-700 dark:text-slate-300; /* Base prose text color */
+  /* Assuming dark mode is default for prose as well */
+  @apply text-text-secondary;
+  /* @apply light:text-text-dark-secondary; */ /* Example for light mode prose */
 }
 .prose h1,
 .prose h2,
@@ -60,51 +73,52 @@ body {
 .prose h4,
 .prose h5,
 .prose h6 {
-  @apply text-slate-900 dark:text-slate-100 font-semibold; /* Prose heading colors and weight */
+  @apply text-neon-green font-semibold; /* Or neon-purple, or text-primary for less intensity */
+  /* @apply light:text-neon-purple; */
 }
 .prose a {
   /* Prose link styles */
-  @apply text-brand-600 font-medium no-underline;
-  @apply hover:text-brand-500 hover:underline;
-  @apply dark:text-brand-500 dark:hover:text-brand-600;
+  @apply text-neon-purple font-medium no-underline;
+  @apply hover:text-neon-green hover:underline;
+  /* @apply light:text-neon-green light:hover:text-neon-purple; */
 }
 .prose strong {
   /* Prose strong (bold) text */
-  @apply font-semibold text-slate-800 dark:text-slate-200;
+  @apply font-semibold text-text-primary;
+  /* @apply light:font-semibold light:text-text-dark-primary; */
 }
 /* Corrected inline code styling for prose */
 .prose code:not(pre > code) {
   /* Target inline code specifically, not code within <pre> */
-  @apply bg-slate-200 text-sm font-mono text-brand-700 rounded-md px-1.5 py-0.5;
-  @apply dark:bg-slate-700 dark:text-brand-400;
-  /* The before:content and after:content are often used to prevent backticks from being copied */
-  /* or to remove unwanted quote rendering by some browsers/markdown parsers for inline code. */
-  /* However, they can sometimes interfere. Test if needed, or remove if causing issues. */
-  /* For basic styling, they might not be necessary. */
+  @apply bg-cyber-bg-alt text-sm font-mono text-neon-green rounded-md px-1.5 py-0.5;
+  /* @apply light:bg-border-light-mode light:text-neon-purple; */
   @apply before:content-[''] after:content-['']; /* Typically to remove quotes around inline code */
 }
 .prose pre {
   /* Prose code blocks */
-  @apply bg-slate-800 text-slate-200 p-4 rounded-lg shadow-md overflow-x-auto;
-  @apply dark:bg-slate-700 dark:text-slate-300;
+  @apply bg-black text-text-secondary p-4 rounded-lg shadow-md overflow-x-auto; /* Using literal black for contrast */
+  /* @apply light:bg-cyber-bg-alt light:text-text-primary; */
 }
 .prose pre code {
   /* Code within preformatted blocks */
-  @apply bg-transparent p-0 text-inherit font-mono text-sm; /* Reset styles, ensure mono font, consistent size */
+  @apply bg-transparent p-0 text-inherit font-mono text-sm;
 }
 .prose blockquote {
-  @apply border-l-4 border-brand-500 pl-4 italic text-slate-600 dark:text-slate-400 my-6; /* Added margin */
+  @apply border-l-4 border-neon-purple pl-4 italic text-text-secondary my-6;
+  /* @apply light:border-neon-green light:text-text-dark-secondary; */
 }
 .prose ul,
 .prose ol {
   @apply my-4 pl-5;
-} /* Basic list styling */
+}
 .prose li {
-  @apply mb-2;
+  @apply mb-2 pl-6 relative; /* Add padding to li for text, and relative for ::before positioning */
 }
 .prose ul li::before {
   /* Custom bullet for unordered lists */
-  @apply content-['•'] text-brand-500 absolute left-0;
+  @apply content-['•'] text-neon-green absolute left-0 top-0; /* Keep absolute but position relative to li */
+  /* Adjust 'left-0' if you need more or less space from the very edge of the li's padding box */
+  /* @apply light:text-neon-purple; */
 }
 .prose ol {
   @apply list-decimal;

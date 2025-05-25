@@ -1,0 +1,140 @@
+[
+  {
+    "title": "The Rise of Bio-Augments: Enhancing or Erasing Humanity?",
+    "slug": "bio-augments-humanity",
+    "date": "2025-06-05",
+    "excerpt": "A critical look at the latest advancements in bio-augmentation and their societal impact.",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "bio-tech",
+      "augmentation",
+      "ethics",
+      "society"
+    ]
+  },
+  {
+    "title": "Surviving the Data Smog: Mental Clarity in a Hyper-Connected World",
+    "slug": "data-smog-survival",
+    "date": "2025-06-15",
+    "excerpt": "The constant barrage of information can be overwhelming. Here's how to cope in the neon haze.",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "mental-health",
+      "information-overload",
+      "dystopia",
+      "self-care",
+      "digital-wellbeing"
+    ]
+  },
+  {
+    "title": "The Art of the Glitch: Aesthetic Rebellion in Digital Spaces",
+    "slug": "glitch-art-rebellion",
+    "date": "2025-07-01",
+    "excerpt": "How digital artists are using system errors and data corruption as a form of protest and expression.",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "art",
+      "digital-art",
+      "rebellion",
+      "culture",
+      "glitch",
+      "activism"
+    ]
+  },
+  {
+    "title": "Memory Markets: The Ethics of Buying and Selling Experiences",
+    "slug": "memory-markets-ethics",
+    "date": "2025-07-05",
+    "excerpt": "A deep dive into the controversial world of memory trading. Is it progress or a perversion of self?",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "ethics",
+      "technology",
+      "memory",
+      "black-market",
+      "neuroscience"
+    ]
+  },
+  {
+    "title": "My First Awesome Blog Post",
+    "slug": "my-first-post",
+    "date": "2025-05-25",
+    "excerpt": "This is a short summary of my very first blog post, exploring exciting new topics in the cyber realm!",
+    "featuredImage": "/images/blog/first-post-banner.png",
+    "tags": [
+      "tech",
+      "cyber",
+      "intro"
+    ]
+  },
+  {
+    "title": "Navigating Neo-Kyoto's Undernet: A Beginner's Guide",
+    "slug": "neo-kyoto-undernet-guide",
+    "date": "2025-06-01",
+    "excerpt": "Dive deep into the digital shadows of Neo-Kyoto. Tips, tricks, and dangers to avoid in the hidden web.",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "neo-kyoto",
+      "undernet",
+      "hacking",
+      "guide",
+      "cybersecurity"
+    ]
+  },
+  {
+    "title": "Escaping the Megacorp: Off-Grid Living in the Cyberpunk Era",
+    "slug": "off-grid-cyberpunk",
+    "date": "2025-07-10",
+    "excerpt": "Is it possible to truly disconnect when the corporations own everything? Exploring the fringes of society.",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "off-grid",
+      "freedom",
+      "megacorps",
+      "survival",
+      "dystopia"
+    ]
+  },
+  {
+    "title": "Finding Real Food in a Synth-Dominated City",
+    "slug": "real-food-synth-city",
+    "date": "2025-06-25",
+    "excerpt": "Beyond the nutrient paste and lab-grown protein, where can you find authentic culinary experiences?",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "food",
+      "culture",
+      "urban-life",
+      "synth-food",
+      "gastronomy"
+    ]
+  },
+  {
+    "title": "Rogue AIs: Urban Legends or Imminent Threat?",
+    "slug": "rogue-ais-threat",
+    "date": "2025-06-20",
+    "excerpt": "Whispers of self-aware AIs are growing louder. We investigate the myths and realities of digital sentience.",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "ai",
+      "artificial-intelligence",
+      "dystopia",
+      "speculation",
+      "singularity"
+    ]
+  },
+  {
+    "title": "Sector 7 Street Style: Fashion for the Chrome-Plated",
+    "slug": "sector-7-street-style",
+    "date": "2025-06-10",
+    "excerpt": "From neon-drenched jackets to optical camo, what are the denizens of Sector 7 wearing this season?",
+    "featuredImage": "/images/blog/placeholder-banner.png",
+    "tags": [
+      "fashion",
+      "cyberpunk-style",
+      "sector-7",
+      "culture",
+      "trends"
+    ]
+  }
+]

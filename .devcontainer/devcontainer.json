@@ -63,7 +63,8 @@
         "usernamehw.errorlens",
         "wayou.vscode-todo-highlight",
         "visualstudioexptteam.vscodeintellicode",
-        "styled-components.vscode-styled-components"
+        "styled-components.vscode-styled-components",
+        "google.geminicodeassist"
       ]
     }
   },
